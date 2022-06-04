@@ -3,6 +3,7 @@ const router = express.Router()
 const Child = require("../models/child.model")
 const Doctor = require("../models/doctor.model")
 const passport = require("passport")
+const mongoose = require("mongoose")
 const connctEnsure = require("connect-ensure-login")
 const { body, validationResult } = require("express-validator")
 
@@ -31,7 +32,20 @@ router.get("/childrenlist", async (req, res, next) => {
   )
   res.render("childrenList", { doctorData }) //for rendering doctor signup
 })
-
+router.get("/child/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params //now we need to validate if its a valid id for the we import
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      req.flash("error", "invalid id")
+      res.redirect("/admin/users")
+      return
+    }
+    const childData = await Child.findById(id)
+    res.render("childProfile", { childData }) //render profile of that child
+  } catch (error) {
+    next(error)
+  }
+})
 //doctor post
 
 //  imp: all post route
