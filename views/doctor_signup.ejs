@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docotor Sign Up</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+    .register-photo {
+        background: #f1f7fc;
+        padding: 100px 100px
+    }
+
+    .register-photo .image-holder {
+        display: table-cell;
+        width: auto;
+        background-image: url("/image/signup.jpg");
+        background-size: cover
+    }
+
+    .register-photo .form-container {
+        display: table;
+        max-width: 900px;
+        width: 90%;
+        margin: 0 auto;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1)
+    }
+
+    .register-photo form {
+        display: table-cell;
+        width: 400px;
+        background-color: #ffffff;
+        padding: 50px 50px;
+        color: #505e6c
+    }
+
+    @media (max-width:991px) {
+        .register-photo form {
+            padding: 40px
+        }
+    }
+
+    .register-photo form h2 {
+        font-size: 24px;
+        line-height: 1.5;
+        margin-bottom: 30px
+    }
+
+    .register-photo form .form-control {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #dfe7f1;
+        border-radius: 0;
+        box-shadow: none;
+        outline: none;
+        color: inherit;
+        text-indent: 0px;
+        height: 40px
+    }
+
+    .register-photo form .form-check {
+        font-size: 13px;
+        line-height: 20px
+    }
+
+    .register-photo form .btn-primary {
+        background: green;
+        border: none;
+        border-radius: 4px;
+        padding: 11px;
+        box-shadow: none;
+        margin-top: 35px;
+        text-shadow: none;
+        outline: none !important
+    }
+
+
+    .register-photo form .btn-primary:active {
+
+        transform: translateY(1px)
+    }
+
+    .register-photo form .already {
+        display: block;
+        text-align: center;
+        font-size: 12px;
+        color: #6f7a85;
+        opacity: 0.9;
+        text-decoration: none
+    }
+
+    .error {
+        color: #FF0000;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+    }
+</style>
+
+<body style="background-color: #f1f7fc ;">
+
+    <div class="register-photo">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <form id="form" method="post" action="">
+                       <h2 class="text-center">Doctor Registration</h2>
+                
+                <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Name" required
+                        id="name"></div>
+                <div class="form-group"><input class="form-control" type="tel" name="phoneNumber" placeholder="Phone Number"
+                        required id="number"></div>
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"
+                        required id="email"></div>
+                <div class="form-group"><input class="form-control" type="password" name="password"
+                        placeholder="Password" required id="password"></div>
+                <br>
+                <!-- <a href="#" class="btn btn-danger">Sign Up</a> -->
+                <button type="submit" class="btn btn-danger">Signup</button>
+                <br>
+                <br>
+                <div class="error">
+                    <small id="error"></small>
+                </div>
+                <br>
+
+                <!--<div class="form-group"><button class="button" type="submit">Sign Up</button></div>
+                <a class="already" href="#">Already have an account? Login .</a>-->
+                <!-- <a class="already" href="#">Already have an account? Login .</a>-->
+                <p style="text-align:center;;">Already have an account? <a style="color:  #FF0000"
+
+                        href="doctor_login.html" class="link-danger">Login</a></p>
+
+                <p style="text-align:center;;">Are you a parent ? <a style="color:  #FF0000" href="signup.html"
+                        class="link-danger">Create Account</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/DoctorSignUp.js"></script>
+</body>
+
+</html>

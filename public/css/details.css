@@ -1,0 +1,422 @@
+.schedule-checkers {
+    background-image: url("/vaccines/schedules/images/checkers.png");
+    background-repeat: repeat;
+    background-color: #f1c622;
+          }
+  
+  .tc-width-7
+  {
+      width: .7%;
+      
+  }
+      
+  div.more-information {
+     height:20px; /*height of your image*/
+     background-image:url(https://www.cdc.gov/vaccines/schedules/images/more-info.png);
+     
+      float:left;
+    background-repeat: no-repeat; /* Do not repeat the image */
+  }
+  
+  iframe
+  {
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  }
+  
+  .font-gray
+  {
+      color: #747474
+  
+  }
+  
+  .table th, .table td {
+     
+      vertical-align: center !important;
+      
+  }
+  
+  .table td.padding-left-two
+  {
+      padding-left:2px;
+      
+  }
+  
+  .table td.padding-bottom-none, .table th.padding-bottom-none
+  {
+      padding-bottom:0px !important;
+      
+  }
+  
+  .table td.padding-top-none, .table th.padding-top-none
+  {
+      padding-top:0px !important;
+      
+  }
+  
+  .table td.padding-right-two
+  {
+      padding-right:2px;
+      
+  }
+  
+  .table-catchup td {
+     
+      text-align:left;
+      
+  }
+  
+  .table-catchup td.text-align-right
+  {
+      text-align:right;
+  }
+  
+  .table-catchup td.text-align-left
+  {
+      text-align:left;
+  }
+  
+  
+  .table-catchup th.text-align-center
+  {
+      text-align:center;
+  }
+  
+  .table-schedule td {
+     
+      text-align: center;
+      
+  }
+  
+  .table-schedule td.text-align-right
+  {
+      text-align:right;
+  }
+  
+  .table-schedule td.text-align-left
+  {
+      text-align:left;
+  }
+  
+  
+  .table-schedule th.text-align-center
+  {
+      text-align:center;
+  }
+  
+  .table th.dotted-border-top {
+      border-top: 5px dotted #000000;
+      
+  }
+  .table th.dotted-border-bottom {
+      border-bottom: 5px dotted #000000;
+      
+  }
+  
+  .table td.dotted-border-top {
+      border-top: 5px dotted #000000;
+      
+  }
+  .table td.dotted-border-bottom {
+      border-bottom: 5px dotted #000000;
+      
+  }
+  
+  .table tr.dotted-border-bottom {
+      border-bottom: 5px dotted #000000;
+      
+  }
+  
+  .table tr.dotted-border-top {
+      border-top: 5px dotted #000000;
+      
+  }
+  
+  
+  .table tbody + tbody {
+    border-top: 1px solid #000000;
+  }
+  
+  
+  .table-bordered {
+    border: 1px solid #000000;
+  }
+  
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #000000;
+  }
+  
+  .table-bordered thead th,
+  .table-bordered thead td {
+    border-bottom-width: 1px;
+  }
+  
+  .table th.padding-zero, .table td.padding-zero {
+      padding-top:0px !important;
+  }
+  .table th.padding-two, .table td.padding-two {
+      padding-top:2px !important;
+  }
+  
+  .lb-yellow
+  {border-left:#ffcf00 12px solid !important;}
+  
+  .lb-green {
+      border-left:#73ae94 12px solid !important;
+  }
+  .lb-red {
+      border-left:#c32032 12px solid !important;
+  }
+  .lb-purple {
+      border-left:#bd9ac6 12px solid !important;
+  }
+  .lb-purple {
+      border-left:#bd9ac6 12px solid !important;
+  }
+  .lb-blue {
+      border-left:#a3d8f5 12px solid !important;
+  }
+  
+  .lb-orange {
+      border-left:#f58220 12px solid !important;
+  }
+  .lb-brown {
+      border-left:#a15c40 12px solid !important;
+  }
+  .lb-gray{
+      border-left:#d5d7d8 12px solid !important;
+  }
+  .lb-pink{
+      border-left:#d83485 12px solid !important;
+  }
+  .lb-orange-adult{
+      border-left:#f7941e 12px solid !important;
+  }
+  
+  .lb-etr-yellow{
+      border-left:#FFF087 12px solid !important;
+  }
+  
+  .schedule-brown{
+       background-color:#a15c40;
+  }
+  .schedule-brown{
+       background-color:#a15c40;
+  }
+  .schedule-yellow {
+      background-color:#ffd204;
+  }
+  
+  .schedule-green {
+      background-color:#76ad9a;
+  }
+  
+  
+  .schedule-red {
+      background-color:#c32032;
+  }
+  
+  .schedule-purple {
+      background-color:#b897c6;
+  }
+  
+  
+  .schedule-white{
+       border: 1px solid #ddd;
+  }
+  
+  .schedule-blue{
+       background-color:#a3d8f5;
+  }
+  
+  .schedule-orange{
+       background-color:#f58220;
+  }
+  
+  .schedule-brown{
+       background-color:#a15c40;
+  }
+  
+  .schedule-gray{
+       background-color:#d5d7d8;
+  }
+  .schedule-pink{
+       background-color:#d83485;
+  }
+  .schedule-adult-orange{
+       background-color:#f7941e;
+  }
+  .etr-teen-lb-blue
+  {border-left:#00a4e4 12px solid !important;}
+  
+  .etr-teen-lb-green 
+  {border-left:#8dc642 12px solid !important;}
+  
+  .etr-teen-lb-orange 
+  {border-left:#e8ac2d 12px solid !important;}
+  
+  .etr-teen-lb-purple 
+  {border-left:#662e8a 12px solid !important;}
+  
+  .etr-teen-schedule-blue {
+      background-color:#00a4e4
+  }
+  .etr-teen-schedule-green {
+      background-color:#8dc642;
+  }
+  .etr-teen-schedule-orange {
+      background-color:#e8ac2d;
+  }
+  .etr-teen-schedule-purple {
+      background-color:#662e8a;
+  }
+  
+  .etr-adult-schedule-pink {
+      background-color:#D2BCC8;
+  }
+  .etr-adult-schedule-green {
+      background-color:#11825D;
+  }
+  .etr-adult-schedule-blue {
+      background-color:#10A2CF;
+  }
+  .etr-adult-schedule-gray {
+      background-color:#CCC;
+  }
+  
+  .etr-child-schedule-blue {
+      background-color:#005EAB;
+      color:#FFFFFF;
+  }
+  .etr-child-schedule-yellow {
+      background-color:#FFF087;
+  }
+  
+  .table th.border-none, .table td.border-none {
+      border:none !important;
+  }
+  
+  .table th.bottom-border-none, .table td.bottom-border-none {
+      border-bottom:none !important;
+  }
+  
+  .table th.top-border-none, .table td.top-border-none {
+      border-top:none !important;
+  }
+  
+  
+  .table th.left-border-none, .table td.left-border-none {
+      border-left:none !important;
+  }
+  
+  .table th.right-border-none, .table td.right-border-none {
+      border-right:none !important;
+  }
+  
+  
+  #main-container .red-color {
+      color: #8f0000 !important;
+  }
+  
+  #main-container .red-color {
+      color: #8f0000 !important;
+  }
+  #main-container .bold {
+      font-weight: 700;
+  }
+  
+  .datestamp {
+  
+      border: medium none;
+      color: #696969;
+      font-size: 0.7em;
+     
+  }
+  
+  sub, sup {
+     
+      line-height: 1.5em;
+     
+  }
+  
+  .font-white {
+      color: #fff;
+  }
+  
+  .font-yellow {
+      color: #ffd204;
+  }
+  
+  .primary-bg-color {
+      background: #c1d5b0 none repeat scroll 0 0 !important;
+  }
+  
+  .blue-bg-color
+  {
+      background-color:#c6cfe7;	
+  }
+  
+  .red
+  {
+      color:#e03443;	
+  }
+  .blue
+  {
+      color:#0061a5;	
+  }
+  
+  
+  
+  .bottom-border
+  {
+      border-bottom:#CCCCCC solid thin;
+      
+  }
+  
+  .right-padding-none
+  {
+      padding-right:0px !important;
+  
+  }
+  
+  .font-size-8
+  {
+      font-size:8px;
+      
+  }
+  
+  .font-size-9
+  {
+      font-size:9px;
+      
+  }
+  
+  .font-size-10
+  {
+      font-size:10px;
+      
+  }
+  
+  .font-size-11
+  {
+      font-size:11px;
+      
+  }
+  
+  .width-7
+  {
+      width:7%;
+  }
+  
+  .card-container
+  {
+       padding: .5rem;
+  }
+  
+  .card-container
+  {
+       flex: 1 1 auto;
+  }
+  
+  
