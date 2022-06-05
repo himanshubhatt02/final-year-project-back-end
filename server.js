@@ -96,6 +96,7 @@ app.set("views", [
   path.join(__dirname, "views"),
 
   path.join(__dirname, "views/doctor"),
+  path.join(__dirname, "views/parent"),
   //   path.join(__dirname, "views/doctor"),
   //   path.join(__dirname, "views/parent"),
 ])
@@ -106,6 +107,7 @@ const childRoute = require("./routes/children_module/child_route")
 const staffRoute = require("./routes/madical_staff_module/medical_staff_route")
 ///mongodb Routes
 const mongoDoctor = require("./mongoRoute/route.doctor")
+const mongoParent = require("./mongoRoute/route.parent")
 //All route middlewares goes here
 
 app.use(passport.initialize())
@@ -130,6 +132,7 @@ app.use(`${api}/child`, childRoute)
 app.use(`${api}/staff`, staffRoute)
 //connecting mongo route
 app.use("/doctor", mongoDoctor)
+app.use("/parent", mongoParent)
 
 app.use(
   express.urlencoded({
