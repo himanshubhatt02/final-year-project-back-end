@@ -18,6 +18,15 @@ router.get("/signup", async (req, res, next) => {
 router.get("/login", async (req, res, next) => {
   res.render("parent_login") //for rendering doctor signup
 })
+router.get("/children", async (req, res, next) => {
+  console.log(req.user._id)
+  const parentData = await Parent.findById(req.user._id).populate("children")
+  console.log("getting all data")
+  console.log(parentData)
+  res.render("myChild", parentData)
+  // res.render("children", parentData) //for rendering doctor signup
+  // res.send(parentData)
+})
 
 // imp: all post route
 router.post(
