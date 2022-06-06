@@ -25,6 +25,14 @@ const api = process.env.API_URL
 app.use(cors())
 app.options("*", cors())
 app.set("view engine", "ejs")
+//note: applying policies
+// app.use(function (req, res, next) {
+//   res.setHeader(
+//     "Content-Security-Policy-Report-Only",
+//     "script-src * 'unsafe-eval' https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+//   )
+//   next()
+// })
 
 // Middlewares
 // Middleware to serve static files
@@ -118,6 +126,8 @@ require("./utils/passport.auth") //simple auth //note: ucomeent original
 
 app.use((req, res, next) => {
   res.locals.user = req.user
+  // res.locals.doctor = req.doctor
+  // res.locals.parent = req.parent
   next()
 })
 

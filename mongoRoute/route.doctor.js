@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const Child = require("../models/child.model")
 const Doctor = require("../models/doctor.model")
+const Parent = require("../models/parent.model")
 const passport = require("passport")
 const mongoose = require("mongoose")
 const connctEnsure = require("connect-ensure-login")
@@ -12,11 +13,14 @@ router.get("/", (req, res, next) => {
   console.log("printing user id from server")
   console.log(req.doctor) //getting loged in user data
   console.log(req.user) //getting loged in user data
+  console.log(req.parent) //getting loged in user data
   res.render("docDashboard")
 })
 router.get("/newchild", (req, res, next) => {
   const doctor = req.user
-  res.render("newChild", { doctor })
+  console.log("inside new child route")
+  console.log(typeof doctor, doctor)
+  res.render("newChild", doctor) //note: sending doctor obj directly
 })
 
 router.get("/signup", async (req, res, next) => {
@@ -27,10 +31,13 @@ router.get("/login", async (req, res, next) => {
   res.render("doctor_login") //for rendering doctor signup
 })
 router.get("/childrenlist", async (req, res, next) => {
-  const doctorData = await Doctor.findById(req.user.id).populate(
+  console.log(req.user._id)
+  const doctorData = await Doctor.findById(req.user._id).populate(
     "childrenAdded"
   )
-  res.render("childrenList", { doctorData }) //for rendering doctor signup
+  console.log("getting all data")
+  console.log(doctorData)
+  res.render("childrenList", doctorData) //for rendering doctor signup
 })
 router.get("/child/:id", async (req, res, next) => {
   try {
@@ -46,19 +53,39 @@ router.get("/child/:id", async (req, res, next) => {
     next(error)
   }
 })
+
+router.get("/getparentinfo/:email", async (req, res, next) => {
+  try {
+    // console.log("getting parent info")
+    // res.send(req.user.foodConsumed)
+    console.log("got parent email from " + req.params.email)
+    // res.send()
+    const parent = await Parent.findOne({ email: req.params.email }).exec()
+    console.log(parent)
+    res.send(parent)
+  } catch (e) {
+    console.log("some error while sending data")
+    console.log(e)
+  }
+})
+
 //doctor post
 
 //  imp: all post route
 // note:  new child
 router.post("/newchild", async (req, res, next) => {
   try {
+    console.log(req.body)
     const child = new Child(req.body)
     const { id: newChildId } = await child.save()
-    await Doctor.findByIdAndUpdate(req.user.id, {
+    await Doctor.findByIdAndUpdate(req.user._id, {
       $push: { childrenAdded: newChildId },
     })
+    await Parent.findByIdAndUpdate(req.body.parent_id, {
+      $push: { children: newChildId },
+    })
 
-    const AddedChildren = await Doctor.findById(req.user.id).populate(
+    const AddedChildren = await Doctor.findById(req.user._id).populate(
       "childrenAdded"
     )
     res.send(AddedChildren)

@@ -8,8 +8,15 @@ const connctEnsure = require("connect-ensure-login")
 const { body, validationResult } = require("express-validator")
 
 //  imp: all get route
+router.get("/", async (req, res, next) => {
+  console.log(req.user)
+  res.render("parent_dashboard", req.user) //for rendering Parent signup
+})
 router.get("/signup", async (req, res, next) => {
   res.render("parent_signup") //for rendering Parent signup
+})
+router.get("/login", async (req, res, next) => {
+  res.render("parent_login") //for rendering doctor signup
 })
 
 // imp: all post route
@@ -62,5 +69,16 @@ router.post(
       next(error)
     }
   }
+)
+
+router.post(
+  "/login",
+  passport.authenticate("parentLoginMiddleware", {
+    // successRedirect: "/user/profile", //original
+    successReturnToOrRedirect: "/parent", //original
+
+    failureRedirect: "/parent/login",
+    failureFlash: true,
+  })
 )
 module.exports = router

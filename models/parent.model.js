@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const Child = require("../models/child.model")
 const createHttpError = require("http-errors")
+const { string } = require("joi")
 
 const ParentSchema = new mongoose.Schema({
   mother_name: {
@@ -21,6 +22,10 @@ const ParentSchema = new mongoose.Schema({
     required: true,
     lowercase: true,
     unique: true,
+  },
+  address: {
+    type: String,
+    default: "address not give",
   },
   password: {
     type: String,

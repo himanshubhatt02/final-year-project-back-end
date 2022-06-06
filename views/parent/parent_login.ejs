@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parent Sign Up</title>
+    <title>Signup</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -66,7 +67,21 @@
         outline: none;
         color: inherit;
         text-indent: 0px;
-        height: 40px
+        height: 40px;
+        width: 250px;
+    }
+
+    .register-photo form .form-controll {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #dfe7f1;
+        border-radius: 0;
+        box-shadow: none;
+        outline: none;
+        color: inherit;
+        text-indent: 0px;
+        height: 40px;
+        width: 250px;
     }
 
     .register-photo form .form-check {
@@ -84,74 +99,51 @@
         text-shadow: none;
         outline: none !important
     }
-
-
-    .register-photo form .btn-primary:active {
-
-        transform: translateY(1px)
-    }
-
-    .register-photo form .already {
-        display: block;
-        text-align: center;
-        font-size: 12px;
-        color: #6f7a85;
-        opacity: 0.9;
-        text-decoration: none
-    }
-
-    .error {
-        color: #FF0000;
-        font-size: 1.5rem;
-        font-weight: 600;
-        text-align: center;
-    }
 </style>
 
 <body style="background-color: #f1f7fc ;">
-
+    
     <div class="register-photo">
         <div class="form-container">
+
             <div class="image-holder"></div>
-            <form id="form" method="post" action="">
-                       <h2 class="text-center">parent Registration</h2>
-                
-                <div class="form-group"><input class="form-control" type="text" name="mother_name" placeholder="Mother Name" required
-                        id="name"></div>
-                <div class="form-group"><input class="form-control" type="text" name="father_name" placeholder="Father Name" required
-                        id="name"></div>
-                <div class="form-group"><input class="form-control" type="tel" name="phoneNumber" placeholder="Phone Number"
-                        required id="number"></div>
-                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"
-                        required id="email"></div>
-                <div class="form-group"><input class="form-control" type="text" name="address" placeholder="Full Address"
-                        required id="email"></div>
-                <div class="form-group"><input class="form-control" type="password" name="password"
-                        placeholder="Password" required id="password"></div>
-                <br>
-                <!-- <a href="#" class="btn btn-danger">Sign Up</a> -->
-                <button type="submit" class="btn btn-danger">Signup</button>
-                <br>
-                <br>
-                <div class="error">
-                    <small id="error"></small>
+
+            <form action="" method="post">
+                <button type="button" class="btn btn-danger"><a href="index.html"
+                        style="text-decoration: none;color: white;">Home</a></button>
+                <center>
+                    <h2 class="text-center">Doctor Login</h2>
+                </center>
+
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email ID"
+                        id="email" required></div>
+
+                <div class="form-group">
+                    <input class="form-controll" type="password" name="password"
+                        placeholder="password" id="password" required>
+                    <i class="far fa-eye" id="togglePassword" style="cursor: pointer;">
+                    </i>
                 </div>
                 <br>
+                <!-- <a href="#" class="btn btn-danger">Login</a> -->
+                <input type="submit" class="btn btn-danger" value="Login" id="loginButton" />
+
+
+
 
                 <!--<div class="form-group"><button class="button" type="submit">Sign Up</button></div>
                 <a class="already" href="#">Already have an account? Login .</a>-->
                 <!-- <a class="already" href="#">Already have an account? Login .</a>-->
-                <p style="text-align:center;;">Already have an account? <a style="color:  #FF0000"
-
-                        href="doctor_login.html" class="link-danger">Login</a></p>
-
-                <p style="text-align:center;;">Are you a parent ? <a style="color:  #FF0000" href="signup.html"
-                        class="link-danger">Create Account</a></p>
+                <!-- <p style="text-align:center;;">Don't have an account? <a  style="color:  #FF0000"href="signup.html" class="link-danger">Signup</a></p> -->
+                <%- include('flashmsg.ejs') %> 
             </form>
+            <div class="error">
+                <small id="error"></small>
+            </div>
         </div>
     </div>
+    <!-- <script src="./js/DoctorSignIn.js"></script> -->
 
-    <!-- <script src="./js/DoctorSignUp.js"></script> -->
 </body>
 
 </html>
