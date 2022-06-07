@@ -50,7 +50,7 @@
                                 <tbody>
                                     <% children.forEach((child,index) => { %>
                                     <tr>
-                                        <th scope="row">1 </th>
+                                        <th scope="row"><%= index+1 %> </th>
                                         <td><%= child.id %> </td>
                                         <td><%= child.createdAt %> </td>
                                         <td><%= child.blood_group %> </td>

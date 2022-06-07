@@ -44,13 +44,13 @@
                                         <th scope="col">Blood Group</th>
                             
                                         <th scope="col">Mother Name</th>
-                                        <th scope="col">Profile</th>
+                                        <th scope="col">Father Name</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <% childrenAdded.forEach((child,index) => { %>
                                     <tr>
-                                        <th scope="row">1 </th>
+                                        <th scope="row"><%= index+1 %>  </th>
                                         <td><%= child.id %> </td>
                                         <td><%= child.createdAt %> </td>
                                         <td><%= child.blood_group %> </td>
