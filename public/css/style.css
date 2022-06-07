@@ -30,7 +30,10 @@ html{
     scroll-padding-top: 7rem;
     scroll-behavior: smooth;
 }
-
+.homepage_img{
+    
+    width: 20vw;
+}
 section{
     padding:2rem 9%;
 }
@@ -88,7 +91,7 @@ section:nth-child(even){
 }
 
 .header{
-    padding:2rem 9%;
+    padding:2rem 2%;
     position: fixed;
     top:0; left: 0; right: 0;
     z-index: 1000;

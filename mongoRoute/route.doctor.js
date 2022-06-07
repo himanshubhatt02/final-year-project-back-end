@@ -14,7 +14,9 @@ router.get("/", (req, res, next) => {
   console.log(req.doctor) //getting loged in user data
   console.log(req.user) //getting loged in user data
   console.log(req.parent) //getting loged in user data
-  res.render("docDashboard")
+  totalchildren = req.user.childrenAdded.length
+  console.log(totalchildren)
+  res.render("docDashboard", { totalchildren })
 })
 router.get("/newchild", (req, res, next) => {
   const doctor = req.user
@@ -75,12 +77,15 @@ router.get("/getparentinfo/:email", async (req, res, next) => {
 // note:  new child
 router.post("/newchild", async (req, res, next) => {
   try {
+    console.log("printing request")
     console.log(req.body)
     const child = new Child(req.body)
     const { id: newChildId } = await child.save()
+    console.log("sending data into doctor")
     await Doctor.findByIdAndUpdate(req.user._id, {
       $push: { childrenAdded: newChildId },
     })
+    console.log("sending data into parent")
     await Parent.findByIdAndUpdate(req.body.parent_id, {
       $push: { children: newChildId },
     })

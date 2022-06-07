@@ -20,17 +20,25 @@ require("dotenv/config")
 //initializing api
 //which is the initial route of api
 const api = process.env.API_URL
-
+app.on("ready", () => {
+  mainWindow = new BrowserWindow({
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+  })
+})
 //CORS
 app.use(cors())
 app.options("*", cors())
 app.set("view engine", "ejs")
-//note: applying policies
+// note: applying policies
 // app.use(function (req, res, next) {
 //   res.setHeader(
 //     "Content-Security-Policy-Report-Only",
-//     "script-src * 'unsafe-eval' https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+//     "default-src 'self'; script-src 'self' https://code.jquery.com/jquery-3.2.1.slim.min.js https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js; style-src 'self' https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css; font-src 'self' https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-brands-400.woff2 https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-brands-400.woff https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-brands-400.ttf https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-regular-400.woff2 https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-regular-400.woff https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-regular-400.ttf https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.woff2 https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.woff https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.ttf; img-src 'self'; frame-src 'self'"
 //   )
+
 //   next()
 // })
 
@@ -116,6 +124,7 @@ const staffRoute = require("./routes/madical_staff_module/medical_staff_route")
 ///mongodb Routes
 const mongoDoctor = require("./mongoRoute/route.doctor")
 const mongoParent = require("./mongoRoute/route.parent")
+const mongoPublic = require("./mongoRoute/route.public")
 //All route middlewares goes here
 
 app.use(passport.initialize())
@@ -143,6 +152,7 @@ app.use(`${api}/staff`, staffRoute)
 //connecting mongo route
 app.use("/doctor", mongoDoctor)
 app.use("/parent", mongoParent)
+app.use("/", mongoPublic)
 
 app.use(
   express.urlencoded({
