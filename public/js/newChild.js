@@ -11,6 +11,8 @@ const father_name = document.querySelector('[name="father_name"]')
 const phoneNumber = document.querySelector('[name="phoneNumber"]')
 const address = document.querySelector('[name="address"]')
 const email = document.querySelector('[name="email"]')
+const submitButton = document.querySelector('[name="submitButton"]')
+console.log(submitButton)
 console.log(email)
 
 // const address = document.querySelector('[name="address"]')
@@ -22,12 +24,15 @@ getDetails.addEventListener("click", async () => {
     const response = await fetch(`/doctor/getparentinfo/${parent_email.value}`)
     data = await response.json()
     console.log(data)
+    submitButton.removeAttribute("disabled")
+    submitButton.removeAttribute("style")
     parent_id.value = data._id
     mother_name.value = data.mother_name
     father_name.value = data.father_name
     phoneNumber.value = data.phoneNumber
     email.value = data.email
     address.value = data.address
+    // btn.removeAttribute("disabled")
 
     // address = data.address
   } catch (error) {
