@@ -93,7 +93,7 @@ router.post("/newchild", async (req, res, next) => {
     const AddedChildren = await Doctor.findById(req.user._id).populate(
       "childrenAdded"
     )
-    res.send(AddedChildren)
+    res.redirect("/doctor/childrenlist")
 
     // res.send(`<h1>Added child data succesfully</h1><br>
     // ${child}
