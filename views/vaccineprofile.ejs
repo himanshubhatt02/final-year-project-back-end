@@ -20,7 +20,7 @@
 <body>
     <div class="container">
 
-        <h1>VACCINATION CHART of <%= _id %> </h1>
+        <h1>VACCINATION CHART of <%= vaccine._id %> </h1>
         <hr>
         <div class="row">
           <table class="table row-select">
@@ -42,33 +42,20 @@
             <tbody>
               <form action="/doctor/vaccine" method="post">
 
-              <input type="hidden" name="_id" value='<%= _id %>'' >
+              <input type="hidden" name="_id" value='<%= vaccine._id %>'' >
               <tr>
                 
               
                     <td><a href="aboutvaccine#v1">hepb</a></td>
                               <td>
-                  <select name="hepb" class="form-control">
-                                          <option class="lt"value="one" >COMP(1<sup>st)</option>
-                                          <option class="lt"value="two">DUE(1<sup>st)</option>
-                                          <option class="lt"value="three">O-DUE(1<sup>st)</option>
-                                         
-                                      </select>
+                <%= vaccine.hepb[0] %> 
                 </td>
                                  <td colspan="2">
-                  <select name="hepb" class="form-control">
-                                          <option  class="lt" value="one" >COMP(2<sup>nd)</option>
-                                          <option class="lt"value="two">DUE(2<sup>nd)</option>
-                                          <option class="lt"value="three">O-DUE(2<sup>nd</option>
-                                            </select>
+                                  <%= vaccine.hepb[1] %> 
                                    </td>
                 <td></td>
                 <td colspan="4">
-                  <select name="hepb" class="form-control">
-                                          <option class="lt" value="one" >&larr;COMP(3<sup>rd)&rarr;</option>
-                                          <option class="lt"value="two">DUE(3<sup>rd)</option>
-                                          <option class="lt"value="three">O-DUE(3<sup>rd</option>
-                                            </select>
+                  <%= vaccine.hepb[2] %> 
                                    </td>
                 
                                         

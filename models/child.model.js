@@ -29,6 +29,7 @@ const ChildSchema = new mongoose.Schema({
     type: Date,
     default: () => new Date(),
   },
+  vaccine: {},
 })
 const Child = mongoose.model("Child", ChildSchema)
 module.exports = Child

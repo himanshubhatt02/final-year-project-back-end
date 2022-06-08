@@ -73,6 +73,38 @@ router.get("/getparentinfo/:email", async (req, res, next) => {
 router.get("/vaccine", async (req, res, next) => {
   res.render("vaccine") //for rendering doctor signup
 })
+router.get("/vaccineprofile/:id", async (req, res, next) => {
+  console.log(req.params.id)
+  // res.send(req.params.id)
+  const { vaccine } = await Child.findById(req.params.id, "-_id vaccine").exec()
+  // console.log(vaccine)
+  vaccine.influenza = [vaccine.influenza]
+  vaccine.mmr = [vaccine.mmr]
+  vaccine.var = [vaccine.var]
+  // res.render("vaccineprofile", { vaccine }) //for rendering doctor signup
+  let editedVaccine = vaccine
+  //note: above code is working
+  for (var key in vaccine) {
+    if (Array.isArray(vaccine[key])) {
+      // for (i = 0; i < vaccine[key].length; i++) {
+      for (let i = 0; i < vaccine[key].length; i++) {
+        // console.log(vaccine[key][i])
+        if (vaccine[key][i] == "one") {
+          vaccine[key][i] = "pending"
+        }
+        if (vaccine[key][i] == "two") {
+          vaccine[key][i] = "due"
+        }
+        if (vaccine[key][i] == "three") {
+          vaccine[key][i] = "overDue"
+        }
+        console.log(vaccine[key][i])
+      }
+    }
+  }
+  console.log(vaccine)
+  res.render("vaccineprofile", { vaccine })
+})
 //doctor post
 
 //  imp: all post route
@@ -96,8 +128,8 @@ router.post("/newchild", async (req, res, next) => {
     const AddedChildren = await Doctor.findById(req.user._id).populate(
       "childrenAdded"
     )
-    res.redirect("/doctor/childrenlist")
-
+    // res.redirect("/doctor/childrenlist")
+    res.render("vaccine", { _id: newChildId })
     // res.send(`<h1>Added child data succesfully</h1><br>
     // ${child}
 
@@ -170,7 +202,24 @@ router.post(
   })
 )
 router.post("/vaccine", async (req, res, next) => {
-  console.log(req.body)
-  res.send(req.body) //for rendering doctor signup
+  try {
+    console.log(req.body)
+    console.log(req.body._id)
+    // const newChildWithVaccine = await Child.findOneAndUpdate(
+    //   { _id: req.body._id },
+    //   { vaccine: req.body }
+    // )
+
+    Child.updateOne(
+      { _id: req.body._id },
+      { vaccine: req.body },
+      { multi: true },
+      function (err, numberAffected) {}
+    )
+    res.redirect("/doctor/vaccineprofile")
+    // res.send(req.body) //for rendering doctor signup\
+  } catch (error) {
+    console.log(error)
+  }
 })
 module.exports = router
