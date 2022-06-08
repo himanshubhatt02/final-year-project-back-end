@@ -41,6 +41,15 @@ router.get("/childrenlist", async (req, res, next) => {
   console.log(doctorData)
   res.render("childrenList", doctorData) //for rendering doctor signup
 })
+
+router.get("/allchildren", async (req, res, next) => {
+  console.log(req.user._id)
+  const children = await Child.find({})
+  console.log("getting all data")
+  console.log(children)
+  res.render("allChildren", { children }) //for rendering doctor signup
+})
+
 router.get("/child/:id", async (req, res, next) => {
   try {
     const { id } = req.params //now we need to validate if its a valid id for the we import
