@@ -216,7 +216,7 @@ router.post("/vaccine", async (req, res, next) => {
       { multi: true },
       function (err, numberAffected) {}
     )
-    res.redirect("/doctor/vaccineprofile")
+    res.redirect("/doctor/childrenlist")
     // res.send(req.body) //for rendering doctor signup\
   } catch (error) {
     console.log(error)
