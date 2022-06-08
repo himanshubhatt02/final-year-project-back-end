@@ -27,14 +27,15 @@ router.get("/children", async (req, res, next) => {
   // res.render("children", parentData) //for rendering doctor signup
   // res.send(parentData)
 })
-router.get("/diet", async (req, res, next) => {
-  res.render("diet") //for rendering doctor signup
-})
+
 router.get("/scheme", async (req, res, next) => {
   res.render("scheme") //for rendering doctor signup
 })
 router.get("/schemedetail", async (req, res, next) => {
   res.render("scheme_details") //for rendering doctor signup
+})
+router.get("/diet", async (req, res, next) => {
+  res.render("diet") //for rendering doctor signup
 })
 
 

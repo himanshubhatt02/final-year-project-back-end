@@ -167,9 +167,7 @@ router.post(
     failureFlash: true,
   })
 )
-
-router.post("/doctor/vaccine", (req, res, next) => {
-  console.log(req.body)
+router.get("/vaccine", async (req, res, next) => {
+  res.render("vaccine") //for rendering doctor signup
 })
-
 module.exports = router
