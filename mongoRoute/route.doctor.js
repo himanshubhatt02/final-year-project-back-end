@@ -9,14 +9,22 @@ const connctEnsure = require("connect-ensure-login")
 const { body, validationResult } = require("express-validator")
 
 //  imp: all get route
-router.get("/", (req, res, next) => {
+router.get("/", async (req, res, next) => {
   console.log("printing user id from server")
-  console.log(req.doctor) //getting loged in user data
+  //getting loged in user data
   console.log(req.user) //getting loged in user data
-  console.log(req.parent) //getting loged in user data
-  totalchildren = req.user.childrenAdded.length
-  console.log(totalchildren)
-  res.render("docDashboard", { totalchildren })
+  //getting loged in user data
+
+  allChildrenCount = await Child.countDocuments({})
+  const { childrenAdded: childrenUAdded } = await Doctor.findById(req.user._id)
+  console.log(`total children ${allChildrenCount}`)
+  console.log(`total children u added ${childrenUAdded.length}`)
+
+  doctorData = {
+    allChildrenCount: allChildrenCount,
+    childrenUAdded: childrenUAdded.length,
+  }
+  res.render("docDashboard", doctorData)
 })
 router.get("/newchild", (req, res, next) => {
   const doctor = req.user
