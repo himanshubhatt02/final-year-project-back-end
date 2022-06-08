@@ -42,6 +42,14 @@ app.set("view engine", "ejs")
 //   next()
 // })
 
+app.use(function (req, res, next) {
+  res.setHeader(
+    "Content-Security-Policy-Report-Only",
+    "default-src 'self'; font-src 'self'; img-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' http://localhost:3000/js/diet.js 'unsafe-hashes'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com ; frame-src 'self'"
+  )
+  next()
+})
+
 // Middlewares
 // Middleware to serve static files
 // app.use(express.static("views")) // note:  if all static files are present in views

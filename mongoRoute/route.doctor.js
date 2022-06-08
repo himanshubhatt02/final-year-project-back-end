@@ -75,6 +75,7 @@ router.get("/getparentinfo/:email", async (req, res, next) => {
 
 //  imp: all post route
 // note:  new child
+
 router.post("/newchild", async (req, res, next) => {
   try {
     console.log("printing request")
@@ -166,5 +167,9 @@ router.post(
     failureFlash: true,
   })
 )
+
+router.post("/doctor/vaccine", (req, res, next) => {
+  console.log(req.body)
+})
 
 module.exports = router
