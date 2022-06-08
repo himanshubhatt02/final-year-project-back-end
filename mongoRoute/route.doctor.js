@@ -70,7 +70,9 @@ router.get("/getparentinfo/:email", async (req, res, next) => {
     console.log(e)
   }
 })
-
+router.get("/vaccine", async (req, res, next) => {
+  res.render("vaccine") //for rendering doctor signup
+})
 //doctor post
 
 //  imp: all post route
@@ -167,7 +169,8 @@ router.post(
     failureFlash: true,
   })
 )
-router.get("/vaccine", async (req, res, next) => {
-  res.render("vaccine") //for rendering doctor signup
+router.post("/vaccine", async (req, res, next) => {
+  console.log(req.body)
+  res.send(req.body) //for rendering doctor signup
 })
 module.exports = router
