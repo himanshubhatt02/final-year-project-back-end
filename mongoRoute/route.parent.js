@@ -27,6 +27,9 @@ router.get("/children", async (req, res, next) => {
   // res.render("children", parentData) //for rendering doctor signup
   // res.send(parentData)
 })
+router.get("/diet", async (req, res, next) => {
+  res.render("diet") //for rendering doctor signup
+})
 
 // imp: all post route
 router.post(
