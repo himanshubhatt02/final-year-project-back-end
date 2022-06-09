@@ -32,6 +32,10 @@
         <a href="#book">book</a>
         <a href=""  data-toggle="modal" data-target="#exampleModalCenter" >Doctor Login</a>
         <a href="parent/login">Parent Login</a>
+        <% if (user) { %>
+         
+            <a href="/logout"> logout</a>
+        <% } %>
         <!-- <a href="doctor_signup.html">Doctor Register</a> -->
 
         
@@ -93,13 +97,13 @@
             <div class="container">
                 <div class="row">
                   <div class="col">
-                    <a href="doctor/login">
+                    <a href="/login">
 
                         <img class="homepage_img" src="/image/homepage_login.jpg" alt="">
                     </a>
                   </div>
                   <div class="col">
-                      <a href="doctor/signup">
+                      <a href="/signup">
 
                           <img class="homepage_img" src="/image/homepage_register.jpg" alt="">
                         </a>
@@ -112,7 +116,7 @@
 
                 <div class="row justify-content-around">
                     <div class="col-4">
-                        <a href="doctor/login">
+                        <a href="/login">
 
                             <button type="button" class="btn btn-primary">
                                 Login
@@ -120,7 +124,7 @@
                         </a>
                     </div>
                     <div class="col-4">
-                        <a href="doctor/signup">
+                        <a href="/signup">
 
                             <button type="button" class="btn btn-primary" >
                                 Register

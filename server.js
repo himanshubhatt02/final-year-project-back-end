@@ -11,7 +11,7 @@ const path = require("path")
 const mongoStore = require("connect-mongo")
 const session = require("express-session")
 const passport = require("passport")
-const { ensureLoggedIn } = require("connect-ensure-login")
+const connectEnsureLogin = require("connect-ensure-login")
 
 const app = express()
 
@@ -33,15 +33,6 @@ app.on("ready", () => {
 app.use(cors())
 app.options("*", cors())
 app.set("view engine", "ejs")
-// note: applying policies
-// app.use(function (req, res, next) {
-//   res.setHeader(
-//     "Content-Security-Policy-Report-Only",
-//     "default-src 'self'; script-src 'self' https://code.jquery.com/jquery-3.2.1.slim.min.js https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js; style-src 'self' https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css; font-src 'self' https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-brands-400.woff2 https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-brands-400.woff https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-brands-400.ttf https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-regular-400.woff2 https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-regular-400.woff https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-regular-400.ttf https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.woff2 https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.woff https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.ttf; img-src 'self'; frame-src 'self'"
-//   )
-
-//   next()
-// })
 
 app.use(function (req, res, next) {
   res.setHeader(
@@ -154,12 +145,16 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use(`${api}/register`, registerRoute)
-app.use(`${api}/login`, loginRoute)
-app.use(`${api}/child`, childRoute)
-app.use(`${api}/staff`, staffRoute)
+// app.use(`${api}/register`, registerRoute)
+// app.use(`${api}/login`, loginRoute)
+// app.use(`${api}/child`, childRoute)
+// app.use(`${api}/staff`, staffRoute)
 //connecting mongo route
-app.use("/doctor", mongoDoctor)
+app.use(
+  "/doctor",
+  connectEnsureLogin.ensureLoggedIn({ redirectTo: "/login" }),
+  mongoDoctor
+)
 app.use("/parent", mongoParent)
 app.use("/", mongoPublic)
 
@@ -185,3 +180,19 @@ const port = process.env.PORT || 3000
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
 })
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    next()
+  } else {
+    res.redirect("/")
+  }
+}
+
+function ensureNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    res.redirect("back")
+  } else {
+    next()
+  }
+}

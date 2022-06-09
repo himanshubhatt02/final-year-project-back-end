@@ -131,6 +131,15 @@ router.get("/vaccineprofile/:id", async (req, res, next) => {
   console.log(vaccine)
   res.render("vaccineprofile", { vaccine })
 })
+// note: logout
+router.get("/logout", async (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err)
+    }
+    res.redirect("/")
+  })
+})
 //doctor post
 
 //  imp: all post route
