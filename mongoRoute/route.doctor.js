@@ -92,8 +92,12 @@ router.get("/vaccine", async (req, res, next) => {
 })
 router.get("/diagnosis/:id", async (req, res, next) => {
   // res.send(req.params.id)
-
-  res.render("diagnosis", { _id: req.params.id }) //for rendering doctor signup
+  const { diagnosis } = await Child.findById(
+    req.params.id,
+    "-_id diagnosis"
+  ).exec()
+  console.log(diagnosis)
+  res.render("diagnosis", { _id: req.params.id, diagnosis }) //for rendering doctor signup
 })
 router.get("/vaccineprofile/:id", async (req, res, next) => {
   console.log(req.params.id)

@@ -149,20 +149,22 @@
                     <thead>
                         <tr>
                             <th scope="col">diagnosis name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">medicines</th>
                           
                         </tr>
                     </thead>
                     <tbody>
-                        <% [].forEach((child,index) => { %>
+                        <% diagnosis.forEach((child,index) => { %>
                         <tr>
-                            <th scope="row"><%= index+1 %>  </th>
-                            <td><%= child.id %> </td>
+                            <th scope="row"><%= child.diagnosisName %>  </th>
+                            <td><%= child.problemDescription %> </td>
                           
                               
                         
 
                             <td>
-                                <a class="btn btn-primary" href="/doctor/child/<%= child.id %>"  role="button">View</a>
+                                <%= child.medicines %> 
                             </td>
                         </tr>
                         <% }) %> 
@@ -190,7 +192,8 @@
                 <div class="form-group">
                     <label for="status">Medicines: </label>
                 <input type="text" name="" id="medName" style="margin-left: 2vw;">
-                <button type="button" id="addMed">add medicine</button>
+                <!-- <button type="button" id="addMed">add medicine</button> -->
+                <button type="button" id="addMed" class="btn btn-secondary">Add Medicine</button>
                 <div class="medicineList">
                     <template id="medicine-item-template">
 
