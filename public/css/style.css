@@ -221,7 +221,7 @@ section:nth-child(even){
 }
 
 .services .box-container .box i{
-    color: var(--green);
+    color: var(--salmon);
     font-size: 5rem;
     padding-bottom: .5rem;
 }
