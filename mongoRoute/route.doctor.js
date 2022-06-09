@@ -90,6 +90,11 @@ router.get("/getparentinfo/:email", async (req, res, next) => {
 router.get("/vaccine", async (req, res, next) => {
   res.render("vaccine") //for rendering doctor signup
 })
+router.get("/diagnosis/:id", async (req, res, next) => {
+  // res.send(req.params.id)
+
+  res.render("diagnosis", { _id: req.params.id }) //for rendering doctor signup
+})
 router.get("/vaccineprofile/:id", async (req, res, next) => {
   console.log(req.params.id)
   // res.send(req.params.id)
@@ -239,4 +244,16 @@ router.post("/vaccine", async (req, res, next) => {
     console.log(error)
   }
 })
+
+router.post("/adddiagnosis/:id", async (req, res, next) => {
+  console.log(req.body)
+
+  res.send(req.body)
+  await Child.findOneAndUpdate(
+    { _id: req.params.id },
+    { $push: { diagnosis: req.body } }
+  )
+  console.log("data pushed succesfully")
+})
+
 module.exports = router

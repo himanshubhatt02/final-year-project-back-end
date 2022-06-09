@@ -1,4 +1,12 @@
 const mongoose = require("mongoose")
+
+const DiagnosisSchema = new mongoose.Schema({
+  diagnosisName: String,
+  problemDescription: String,
+  medicines: [],
+  _id: false,
+})
+
 const ChildSchema = new mongoose.Schema({
   blood_group: {
     type: String,
@@ -30,6 +38,7 @@ const ChildSchema = new mongoose.Schema({
     default: () => new Date(),
   },
   vaccine: {},
+  diagnosis: [DiagnosisSchema],
 })
 const Child = mongoose.model("Child", ChildSchema)
 module.exports = Child
