@@ -90,6 +90,9 @@ router.get("/getparentinfo/:email", async (req, res, next) => {
 router.get("/vaccine", async (req, res, next) => {
   res.render("vaccine") //for rendering doctor signup
 })
+router.get("/vaccine1", async (req, res, next) => {
+  res.render("vaccine1") //for rendering doctor signup
+})
 router.get("/diagnosis/:id", async (req, res, next) => {
   // res.send(req.params.id)
   const { diagnosis } = await Child.findById(

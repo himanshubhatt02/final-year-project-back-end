@@ -37,6 +37,9 @@ router.get("/schemedetail", async (req, res, next) => {
 router.get("/diet", async (req, res, next) => {
   res.render("diet") //for rendering doctor signup
 })
+router.get("/vaccine1", async (req, res, next) => {
+  res.render("vaccine1") //for rendering doctor signup
+})
 
 
 // imp: all post route
