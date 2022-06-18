@@ -36,6 +36,9 @@ router.get("/newchild", (req, res, next) => {
 router.get("/signup", async (req, res, next) => {
   res.render("doctor_signup") //for rendering doctor signup
 })
+router.get("/diagnosis1", async (req, res, next) => {
+  res.render("diagnosis1") //for rendering doctor signup
+})
 
 router.get("/login", async (req, res, next) => {
   res.render("doctor_login") //for rendering doctor signup
