@@ -16,7 +16,7 @@ router.get("/", async (req, res, next) => {
   //getting loged in user data
 
   allChildrenCount = await Child.countDocuments({})
-  const { childrenAdded: childrenUAdded } = await Doctor.findById(req.user._id)
+  const { childrenAdded :childrenUAdded } = await Doctor.findById(req.user._id)
   console.log(`total children ${allChildrenCount}`)
   console.log(`total children u added ${childrenUAdded.length}`)
 
